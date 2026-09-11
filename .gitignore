@@ -1,0 +1,30 @@
+# 运行时产物（可再生成，不入库）
+output/
+demo/output/
+
+# 本地缓存（行情/日历等，可重新拉取）
+data/cache/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 私人数据与凭据（绝不入库）
+.env
+*.key
+secrets*
+config.local.*
+data/config/positions.md
+data/config/positions.local.md
+
+# 临时工作产物
+tmp_*
+
+# 个人看盘日记与运行台账（生产环境使用，不入库）
+journals/
+
+# 工具状态
+.mimosa/
+.DS_Store

@@ -1,0 +1,33 @@
+name: CI
+
+# 远端可见 checks（复审要求）：每次 push / PR 跑完整密闭测试套件。
+# 平台固定 windows-latest —— 本仓库的开发与验证环境是 Windows（批处理启动项、
+# msvcrt 文件锁、GBK 控制台兼容代码），测试套件只在 Windows 上实测通过；
+# Linux 未验证，故不挂 ubuntu runner（避免给出无法复现的绿灯）。
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: pytest (windows-latest)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+
+      - name: Install test dependencies
+        run: python -m pip install -r requirements-ci.txt
+
+      - name: Run hermetic test suite
+        # tests/conftest.py 已禁网（DNS/出网/日K整包下载全部拦截），此处再显式
+        # 固定 legacy 数据模式，与本地 `python -m pytest tests/ -q` 完全一致。
+        env:
+          STOCK_DATA_MODE: legacy
+        run: python -m pytest tests/ -q

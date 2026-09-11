@@ -1,0 +1,6 @@
+# v7.2.13d P2 工程质量基线：开发/验证依赖（不属生产运行依赖）。
+# 安装：python -m pip install -r requirements-dev.txt
+# 用途与运行命令见 references/validation-and-evolution.md §8。
+ruff==0.16.6
+mypy==2.3.1
+pytest-cov==7.1.0

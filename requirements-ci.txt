@@ -1,0 +1,8 @@
+# CI 依赖（.github/workflows/ci.yml）——只含密闭测试套件实际需要的包。
+# 生产运行依赖（akshare 等）不在其中：测试全部走 mock/离线夹具，禁真实网络。
+# 版本下限=本地实测通过的版本，上限不锁（CI 需要能发现上游破坏性变更）。
+pytest>=9.0
+pandas>=2.2
+pyarrow>=23.0
+requests>=2.32
+PyYAML>=6.0

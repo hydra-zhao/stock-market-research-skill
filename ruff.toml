@@ -1,0 +1,11 @@
+# v7.2.13d P2 工程质量基线：最小 Ruff 配置
+# 只盯三类高危静态缺陷，不做风格执法（行宽/引号/排序一律不管）：
+#   F401 未使用导入 / F811 重复定义 / F821 未定义名称 / E722 裸 except（危险宽泛异常）
+# 本仓库刻意大量使用 `except Exception:` 的 fail-visible 降级（带注释豁免），
+# 故不启用 BLE001；裸 except（连 Exception 都不写）才是真危险面。
+line-length = 120
+target-version = "py311"
+exclude = ["output", "journals", "references", "docs", ".mimosa", ".archive"]
+
+[lint]
+select = ["F401", "F811", "F821", "E722"]

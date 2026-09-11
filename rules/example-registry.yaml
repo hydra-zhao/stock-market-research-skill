@@ -1,0 +1,18 @@
+# 规则注册表（schema 示例 · 虚构规则）
+# 生产版每条关键规则登记：来源、事故证据、锁定测试、撤销条件。
+schema_version: 1
+rules:
+  - id: POOL-901
+    title: 池准入必过风险扫描（示例）
+    level: hard_gate
+    origin:
+      kind: incident_review        # incident_review | user_directive | evolution
+      date: "2026-01-15"
+      summary: 演示：某次风险事件复盘后升格为硬闸
+    evidence:
+      - artifact: output/reviews/quick-review-20260115.md   # 演示路径
+        note: 演示条目——事件证据链可追溯
+    locked_by:
+      - tests/test_demo_contract.py
+    revocation_condition: 无（工程纪律级）
+    notes: 虚构示例，仅演示注册表格式
