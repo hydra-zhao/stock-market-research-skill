@@ -1,5 +1,7 @@
 # A-Share Multi-Timeframe Trading Analysis Skill · 公开作品展示版
 
+[![CI](https://github.com/hydra-zhao/stock-market-research-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/hydra-zhao/stock-market-research-skill/actions/workflows/ci.yml)
+
 一个面向 A 股研究场景的 **Agent + 数据工程系统**：通过多源数据、确定性处理、
 fail-closed 风控与可验证交付，降低 LLM 在金融分析中的幻觉与数据失真风险。
 
@@ -92,7 +94,7 @@ flowchart LR
 - **数据源**：问财 OpenAPI、东方财富妙想、同花顺 DataAPI、AKShare、
   金十资讯 MCP、腾讯/东财前复权K线 —— 全部经 netguard 白名单出网
 - **Claude Code Skill**：SKILL.md 声明式路由 + 渐进加载 + 硬闸优先级
-- **质量基建**：pytest 密闭套件（全局禁网闸）、ruff、mypy、GitHub Actions CI
+- **质量基建**：pytest 密闭套件（全局禁网闸）、ruff、GitHub Actions CI；mypy 用于辅助类型检查（公开版未将其设为 CI 门禁）
 
 ## 核心模块
 
