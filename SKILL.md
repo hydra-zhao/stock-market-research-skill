@@ -16,6 +16,18 @@ metadata:
 > 库 + 注册表；公开版提供格式示例，见 `rules/README.md`）。
 > 本文只保留：能力边界、硬闸纪律、执行顺序、入口路由、场景文件索引、声明。
 
+## Agent orchestration router（agent-neutral）
+
+业务/研究规则与验证闸门 → 共享 Agent Contract → Generic Safe Profile →
+运行时明确识别的 Agent-specific orchestration override。未知 Agent 必须使用
+保守默认，不得因为支持 shell、并行工具或 subagent 就猜测自己的产品身份。
+Agent-specific profile 只能调整并发、委派、搜索、worktree、上下文与测试调度，
+不能改变领域语义、provider contract、验证规则、canonical 输出或确定性工作流。
+编排停留在 workflow level；Python workflow 已管理的 provider/data 并发不得再次
+拆分，避免 `Agent × workflow × provider` 的无控制放大。详见：
+`docs/agent-contract.md`、`docs/agent-default.md`、`AGENTS.md`、`CLAUDE.md` 与
+`.cursor/rules/stock-agent.mdc`。
+
 ## 1. 能力与适用边界
 
 - 多周期交易分析与执行辅助：大盘复盘（快速/完整/盘中快照）、个股诊断、

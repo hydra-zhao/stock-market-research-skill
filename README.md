@@ -26,6 +26,14 @@ fail-closed 风控与可验证交付，降低 LLM 在金融分析中的幻觉与
 | **Agent / Skill 架构** | 声明式路由、渐进加载、多代理复核链（SKILL.md + AGENTS.md） |
 | **Hermetic Test Suite** | 测试全局禁网闸：150+ 用例零网络可重复运行，GitHub Actions CI |
 
+## Multi-Agent Orchestration
+
+本项目可被 Codex、Claude Code、Cursor 或其他 coding agent 调用。研究核心、
+验证闸门与确定性输出共享；Agent-specific profile 只改变执行方式（例如并发、
+搜索、上下文与测试调度），未知 Agent 使用 Generic Safe Profile。编排停留在
+workflow level，避免 Agent、workflow 与 provider 并发叠加。详见
+[`docs/agent-contract.md`](docs/agent-contract.md)。
+
 ---
 
 ## 这是什么
@@ -181,7 +189,7 @@ python -m pytest tests/ -q
 ```
 stock-public/
 ├── SKILL.md               ← Skill 路由入口（展示版骨架）
-├── AGENTS.md              ← 多代理协作约定（Sol/Luna 复核链）
+├── AGENTS.md              ← Codex 编排示例（通用复核链）
 ├── rules/                 ← 规则层：格式与注册表示例（生产规则私有）
 ├── references/            ← 场景化渐进加载说明
 ├── systems/ tactics/ core/ knowledge/  ← 心法/战术/知识层示例与说明

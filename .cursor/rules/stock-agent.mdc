@@ -1,0 +1,22 @@
+---
+description: Public workflow-level orchestration boundaries for Cursor
+alwaysApply: false
+---
+
+# Cursor orchestration override
+
+Use this file only when the runtime explicitly identifies itself as Cursor;
+otherwise use `docs/agent-default.md`.
+
+- `docs/agent-contract.md` and business/research rules have priority.
+- Search narrowly, make small isolated edits, and run focused tests plus
+  static checks for changed instruction files.
+- Treat a workflow as the unit of orchestration. Do not decompose provider or
+  data tasks when Python already manages their concurrency; prevent
+  `Agent × workflow × provider` amplification.
+- Preserve unrelated working-tree changes. Do not reset, restore, stash, clean,
+  rebase, or auto-format out-of-scope files.
+
+This override may change search, edit, context, worktree, and test scheduling
+only. It never changes domain semantics, validation gates, provider contracts,
+canonical truth, or output contracts.
